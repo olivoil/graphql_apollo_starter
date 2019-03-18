@@ -1,0 +1,18 @@
+overwrite: true
+schema:
+  - ./src/schema.ts
+documents: ./src/modules/**/*.ts
+require:
+  - tsconfig-paths/register
+  - ts-node/register/transpile-only
+generates:
+  ./src/models.ts:
+    config:
+      interfacePrefix: "I"
+      contextType: ./context#IContext
+    plugins:
+      - add: /* tslint:ignore */
+      - time
+      - typescript-common
+      - typescript-server
+      - typescript-resolvers
